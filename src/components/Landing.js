@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const gridItems = [
-    { id: 1, title: 'Containers', imgSrc: 'https://via.placeholder.com/100' },
-    { id: 2, title: 'Materials', imgSrc: 'https://via.placeholder.com/100' },
+    { id: 1, title: 'Container', imgSrc: 'https://via.placeholder.com/100' },
+    { id: 2, title: 'Material', imgSrc: 'https://via.placeholder.com/100' },
     { id: 3, title: 'Byggkarl', imgSrc: 'https://via.placeholder.com/100' },
     { id: 4, title: 'Byggsackar', imgSrc: 'https://via.placeholder.com/100' },
     { id: 5, title: 'Waste', imgSrc: 'https://via.placeholder.com/100' },
@@ -14,6 +14,7 @@ function Landing() {
     const navigate = useNavigate();
   
     const handleGridItemClick = (id) => {
+        console.log("handleGridItemClick", id);
       navigate(`/container/${id}`);
     };
 
@@ -24,7 +25,7 @@ function Landing() {
             <div
               key={item.id}
               className="grid-item"
-              onClick={() => handleGridItemClick(item.id)}
+              onClick={() => handleGridItemClick(item.title)}
             >
               <img src={item.image} alt={item.title} />
               <p>{item.title}</p>
