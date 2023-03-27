@@ -1,0 +1,21 @@
+.App {
+    text-align: center;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .landing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    height: 100vh;
+  }
+  
+  .container-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    height: 50vh;
+  }
+  

@@ -1,0 +1,23 @@
+# Dependency directories
+node_modules/
+
+# Parcel build output
+dist/
+.cache/
+.parcel-cache/
+
+# Environment variables
+.env
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
