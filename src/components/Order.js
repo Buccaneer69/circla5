@@ -22,23 +22,53 @@ const OrderForm = () => {
     } = useForm();
 
     const onSubmit = (data) => {
+        const { date, time, deliveryMethod, name, contact, phone, email, markings, file, address, message, terms, storeData } = data;
+      
         const orderData = {
-            category,
-            subcategory,
-            listItem,
-            ...data,
+          category,
+          subcategory,
+          listItem,
+          date,
+          time,
+          deliveryMethod,
+          name,
+          contact,
+          phone,
+          email,
+          markings,
+          file,
+          address,
+          message,
+          terms,
+          storeData,
         };
         sessionStorage.setItem("order", JSON.stringify(orderData));
         console.log("Order saved:", orderData);
     };
 
-    const onContinue = (formData) => {
+    const onContinue = (data) => {
+        const { date, time, deliveryMethod, name, contact, phone, email, markings, file, address, message, terms, storeData } = data;
+      
         const orderData = {
           category,
           subcategory,
           listItem,
-          ...formData,
+          date,
+          time,
+          deliveryMethod,
+          name,
+          contact,
+          phone,
+          email,
+          markings,
+          file,
+          address,
+          message,
+          terms,
+          storeData,
         };
+      
+        console.log("Order data:", orderData);
         sessionStorage.setItem("order", JSON.stringify(orderData));
         navigate("/");
       };
@@ -47,6 +77,7 @@ const OrderForm = () => {
     useEffect(() => {
     // Check if there is saved order data in session storage
     const savedOrder = sessionStorage.getItem("order");
+    console.log("savedOrder", savedOrder);
     if (savedOrder) {
         const parsedOrder = JSON.parse(savedOrder);
         reset(parsedOrder);
