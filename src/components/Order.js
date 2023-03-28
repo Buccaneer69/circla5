@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
 
 const deliveryMethods = [
@@ -10,39 +10,49 @@ const deliveryMethods = [
 ];
 
 const OrderForm = () => {
-  const { category, subcategory, listItem } = useParams();
-  const {
-    control,
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+    const navigate = useNavigate();
+    const { category, subcategory, listItem } = useParams();
+    const {
+        control,
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+        getValues
+    } = useForm();
 
-  const onSubmit = (data) => {
-    const orderData = {
-      category,
-      subcategory,
-      listItem,
-      ...data,
+    const onSubmit = (data) => {
+        const orderData = {
+            category,
+            subcategory,
+            listItem,
+            ...data,
+        };
+        sessionStorage.setItem("order", JSON.stringify(orderData));
+        console.log("Order saved:", orderData);
     };
-    sessionStorage.setItem("order", JSON.stringify(orderData));
-    console.log("Order saved:", orderData);
-  };
 
-  const onContinue = () => {
-    reset();
-  };
+    const onContinue = (formData) => {
+        const orderData = {
+          category,
+          subcategory,
+          listItem,
+          ...formData,
+        };
+        sessionStorage.setItem("order", JSON.stringify(orderData));
+        navigate("/");
+      };
+      
 
-  useEffect(() => {
+    useEffect(() => {
     // Check if there is saved order data in session storage
     const savedOrder = sessionStorage.getItem("order");
     if (savedOrder) {
-      const parsedOrder = JSON.parse(savedOrder);
-      reset(parsedOrder);
-      console.log("Order loaded from session storage:", parsedOrder);
+        const parsedOrder = JSON.parse(savedOrder);
+        reset(parsedOrder);
+        console.log("Order loaded from session storage:", parsedOrder);
     }
-  }, [reset]);
+    }, [reset]);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,7 +83,7 @@ const OrderForm = () => {
                     )}                                
                 </p>
                 {errors.action && <p>Please enter an action</p>}
-                <button onClick={onContinue}>Continue ordering</button>
+                <button onClick={() => onContinue(getValues())}>Continue ordering</button>
                 <button type="button" onClick={reset}>
                     Reset form
                 </button>
