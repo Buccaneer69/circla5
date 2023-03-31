@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 // Components
+import TopBar from './components/TopBar';
 import Landing from './components/Landing';
 import Container from './components/Container';
 import OrderForm from './components/Order';
@@ -17,15 +18,21 @@ const screens = [
 ];
 
 function App() {
-    return (
-        <Router>
+  return (
+    <Router>
+        <div className="content">
+            <TopBar />
             <Routes>
                 <Route path="/" element={<Landing />} />
                 <Route path="/container/:id" element={<Container />} />
-                <Route path="/order/:category/:subcategory/:listItem" element={<OrderForm />} />  
+                <Route
+                path="/order/:category/:subcategory/:listItem"
+                element={<OrderForm />}
+                />
             </Routes>
-        </Router>
-    );
+        </div>
+    </Router>
+  );
 }
 
 export default App;
