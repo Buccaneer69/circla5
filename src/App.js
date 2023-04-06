@@ -20,7 +20,7 @@ const screens = [
 function App() {
   return (
     <Router>
-        <div className="content">
+        <div className="app-content">
             <TopBar />
             <Routes>
                 <Route path="/" element={<Landing />} />

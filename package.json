@@ -1,17 +1,31 @@
 {
-  "name": "circla5",
+  "name": "circla",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "source": "index.js",
   "scripts": {
-    "start": "parcel serve ./index.html",
-    "build": "parcel build ./index.html"
+    "start": "parcel serve public/index.html",
+    "build": "parcel build public/index.html --public-url ./"
+  },
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/config-default": "^2.8.3",
+    "@parcel/packager-raw-url": "^2.8.3",
+    "@parcel/reporter-cli": "^2.8.3",
+    "@parcel/reporter-dev-server": "^2.8.3",
+    "@parcel/transformer-posthtml": "^2.8.3",
+    "@parcel/transformer-webmanifest": "^2.8.3",
+    "@parcel/validator-typescript": "^2.8.3",
+    "cssnano": "^5.1.15",
     "parcel": "^2.8.3",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "postcss": "^8.4.21",
     "process": "^0.11.10"
   },
   "dependencies": {

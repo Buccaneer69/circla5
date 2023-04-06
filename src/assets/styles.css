@@ -6,6 +6,7 @@
     position: relative;
     padding: 10px;
     background-color: white;
+    width: 100%;
    
 }
 .top-bar .go-back {
@@ -52,7 +53,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    min-width: 150px;
+    min-width: 80px;   
   }  
 .landing, .top-section {
     text-align: center;
@@ -117,12 +118,10 @@
     text-align: left;
 }  
 .middle-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-  }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
 .middle-section button {
     display: inline-block;
     padding: 10px 20px;
@@ -140,6 +139,15 @@
     align-items: center;
     margin-top: 20px;
 }
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.button-item {
+    flex: 1 1 33%;
+    padding: 5px;
+}  
+  
 /* End Container */  
 /* ContainerOptions */
 .list-group-item {
@@ -204,4 +212,5 @@
     border-radius: 5px;
     background-color: #f1f1f1;
   }
+
 /* End OrderForm */

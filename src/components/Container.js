@@ -19,6 +19,7 @@ const Container = () => {
   const [optionsComponent, setOptionsComponent] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [selectedListItem, setSelectedListItem] = useState(null);
+  const [middleSectionClicked, setMiddleSectionClicked] = useState(false); 
 
   const optionsFile = optionsFiles[id];
   console.log("Container component rendered", optionsFile);
@@ -29,6 +30,7 @@ const Container = () => {
 
   const handleMiddleGridItemClick = (itemId) => {
     console.log("handleMiddleGridItemClick", itemId);
+    setMiddleSectionClicked(true);
     const selectedItem = optionsFile.middleSectionGridItems.find(
       (item) => item.id === itemId
     );
@@ -72,12 +74,18 @@ const Container = () => {
         </div>
       </div>
       <div className="generalButton">
+        {middleSectionClicked && (
           <button className="sendOrder" onClick={() => setOrder(id, selectedOptions.subcategory, selectedListItem)} >
             Lägg beställning
           </button>
+        )}
         </div>
       {/* Middle section */}
-      <div className="middle-section">                
+      <div className="middle-section"
+        style={{
+          gridTemplateColumns: `repeat(${Math.min(optionsFile.middleSectionGridItems.length, 3)}, 1fr)`,
+        }}
+      >                
         {optionsFile.middleSectionGridItems.map((item) => (
           <button
             key={item.id}
@@ -94,7 +102,9 @@ const Container = () => {
       {/* Third section */}
       <div className="third-section">
         {optionsComponent && (
-          <div>{optionsComponent({ onListItemClick: handleListItemClick })}</div> // Update this line
+          <div className="button-container">
+            {optionsComponent({ onListItemClick: handleListItemClick })}
+          </div>
         )}
       </div>
     </div>
