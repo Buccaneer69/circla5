@@ -2,6 +2,11 @@
     "version": 2,
     "routes": [
       {
+        "src": "/(.*\\.(html|css|js|json))",
+        "dest": "/dist/$1",
+        "headers": { "cache-control": "s-maxage=0" }
+      },
+      {
         "src": "/(.*)",
         "dest": "/dist/$1",
         "headers": { "cache-control": "s-maxage=0" }
