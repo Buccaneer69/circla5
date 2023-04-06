@@ -5,7 +5,8 @@
   "source": "index.js",
   "scripts": {
     "start": "parcel serve public/index.html",
-    "build": "parcel build public/index.html --public-url ./"
+    "build": "parcel build public/index.html --public-url ./",
+    "vercel-build": "parcel build public/index.html"
   },
   "staticFiles": {
     "staticPath": "public",
