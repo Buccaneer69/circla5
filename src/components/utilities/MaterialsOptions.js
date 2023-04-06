@@ -4,10 +4,7 @@ import BergkrossImg from '../../../public/img/bergkross.jpg';
 import MakadamImg from '../../../public/img/makadam-8-16-sackad-butik.jpg';
 import GrusImg from '../../../public/img/gardsgrus.jpg';
 import StenmjolImg from '../../../public/img/stenmjol.jpg';
-import VaxtjordImg from '../../../public/img/vaxtjord_A.jpg';
-import TackbarkImg from '../../../public/img/Tackbark-Lowres.jpg';
 import ToppdressImg from '../../../public/img/Toppdress-Lowres.jpg';
-import rorgravsgrusImg from '../../../public/img/rorgravsgrus.jpg';
 import MakadamFlisImg from '../../../public/img/Makadam-Flis-m-Bio-Lowres.jpg';
 
 
